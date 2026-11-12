@@ -1,0 +1,42 @@
+{
+  "name": "social-connection-app",
+  "version": "1.0.0",
+  "description": "Backend API for Social Connection App",
+  "keywords": [
+    "social-media",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "homepage": "https://github.com/birbalkr/Social-Connection-App#readme",
+  "bugs": {
+    "url": "https://github.com/birbalkr/Social-Connection-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birbalkr/Social-Connection-App.git"
+  },
+  "license": "ISC",
+  "author": "birbal kumar",
+  "type": "module",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.12.1",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.14.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.10.1"
+  }
+}
