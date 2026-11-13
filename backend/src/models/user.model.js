@@ -11,11 +11,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        index: true,
     },
     userName: {
         type: String,
         required: true,
         unique: true,
+        index: true,
     },
     password: {
         type: String,
@@ -25,7 +27,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ["Student", "Teacher"],
         default: "Student",
-        required: true,
     },
     schoolName: {
         type: String,
@@ -33,11 +34,14 @@ const userSchema = new mongoose.Schema({
     },
     status: {
         enum: ["outpass", "ongoing", "out_of_JNV"],
-        required: true,
     },
     address: {
         area: { type: String, required: true },
         city: { type: String, required: true }
+    },
+    refreshToken: {
+        type: String,
+        default: null,
     }
 
 }, {
@@ -45,5 +49,6 @@ const userSchema = new mongoose.Schema({
 })
 
 
-const userModel = mongoose.model("user",userSchema);
+const userModel = mongoose.model("user", userSchema);
+userModel.createIndexes()
 export default userModel
