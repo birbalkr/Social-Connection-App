@@ -10,18 +10,19 @@ export const registerUser = async (req, res) => {
     const { name, email, userName, password, schoolName, status, address } = req.body
 
 
-    const user = await userModel.create({
-        name, email, userName, password, schoolName, status, address
-    })
 
     const usernameExists = await userModel.findOne({ userName })
-    
+
     if (usernameExists) {
         return res.status(409).json({
             message: "username is already exists.."
         })
     }
-    const emailExists = await userModel.findOne({ email })
+
+    const emailExists = await userModel.findOne({
+        email: email.toLowerCase()
+    })
+
     if (emailExists) {
         return res.status(409).json({
             message: "user email is already exists.."
@@ -29,6 +30,12 @@ export const registerUser = async (req, res) => {
     }
 
     try {
+
+        const user = await userModel.create({
+            name, email, userName, password, schoolName, status, address
+        })
+
+
         const { accessToken, refreshToken } = await UserToken({ userId: user.id, role: user.role })
 
         res.cookie("refreshToken", refreshToken, { httpOnly: true, })
@@ -52,7 +59,9 @@ export const registerUser = async (req, res) => {
         })
     } catch (error) {
         console.log("error in register:  ", error);
-
     }
 
 }
+
+
+export const loginUser = async (req, res) => { }
